@@ -28,7 +28,7 @@ import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
 // import NotificationBadge from "react-notification-badge";
 // import { Effect } from "react-notification-badge";
-import { getSender } from "../../config/ChatLogic";
+// import { getSender } from "../../config/ChatLogic";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from '../../context/ChatProvider';
 
