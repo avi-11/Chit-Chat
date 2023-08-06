@@ -8,6 +8,7 @@ const connectDB=require('./config/db');
 const userRouter = require('./routes/userRoutes');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const chatRouter = require('./routes/chatRoutes');
+const messageRouter = require('./routes/messageRoutes');
 
 const app=express();
 app.use(express.json())
@@ -22,6 +23,7 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userRouter);
 app.use('/chat',chatRouter);
+app.use('/message',messageRouter)
 
 app.use(notFound);
 app.use(errorHandler)
