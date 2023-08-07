@@ -11,16 +11,12 @@ const chatRouter = require('./routes/chatRoutes');
 const messageRouter = require('./routes/messageRoutes');
 const path=require('path')
 
+
+connectDB();
+dotenv.config();
 const app=express();
 app.use(express.json())
 
-dotenv.config();
-
-connectDB();
-
-app.get('/',(req,res)=>{
-    res.send('hi this is chit-chat')
-})
 
 app.use('/user',userRouter);
 app.use('/chat',chatRouter);
