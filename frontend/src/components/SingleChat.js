@@ -1,7 +1,7 @@
 import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
-// import "./styles.css";
+import "./styles.css";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender,getSenderFull } from "../config/ChatLogic";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import ProfileModal from "./misc/ProfileModal"
 import ScrollableChat from "./ScrollableChat";
-import Lottie from "lottie-react";
+import Lottie from "react-lottie"
 import animationData from "../animations/typing.json";
 
 import io from "socket.io-client";
@@ -35,7 +35,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  const { selectedChat, setSelectedChat, user,notification,setNotification} =
+  const { selectedChat, setSelectedChat, user, notification, setNotification } =
     ChatState();
 
   const fetchMessages = async () => {
@@ -118,7 +118,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     fetchMessages();
 
     selectedChatCompare = selectedChat;
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, [selectedChat]);
 
   useEffect(() => {
@@ -251,7 +251,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         </>
       ) : (
         // to get socket.io on same page
-        <Box display="flex" alignItems="center" justifyContent="center" h="100%">
+        <Box d="flex" alignItems="center" justifyContent="center" h="100%">
           <Text fontSize="3xl" pb={3} fontFamily="Work sans">
             Click on a user to start chatting
           </Text>
