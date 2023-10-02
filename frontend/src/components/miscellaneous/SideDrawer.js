@@ -19,7 +19,7 @@ import {
 import { Tooltip } from "@chakra-ui/tooltip";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/toast";
@@ -28,9 +28,9 @@ import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
-import { getSender } from "../../config/ChatLogic";
+import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
-import { ChatState } from '../../context/ChatProvider';
+import { ChatState } from "../../Context/ChatProvider";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -39,18 +39,21 @@ function SideDrawer() {
   const [loadingChat, setLoadingChat] = useState(false);
 
   const {
-    user,setSelectedChat,
+    setSelectedChat,
+    user,
+    notification,
+    setNotification,
     chats,
-    setChats,notification,setNotification
+    setChats,
   } = ChatState();
 
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate=useNavigate();
+  const history = useHistory();
 
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
-    navigate("/");
+    history.push("/");
   };
 
   const handleSearch = async () => {
@@ -122,7 +125,7 @@ function SideDrawer() {
   return (
     <>
       <Box
-        display="flex"
+        d="flex"
         justifyContent="space-between"
         alignItems="center"
         bg="white"
@@ -133,7 +136,7 @@ function SideDrawer() {
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
-            <Text display={{ base: "none", md: "flex" }} px={4}>
+            <Text d={{ base: "none", md: "flex" }} px={4}>
               Search User
             </Text>
           </Button>
@@ -192,7 +195,7 @@ function SideDrawer() {
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
           <DrawerBody>
-            <Box display="flex" pb={2}>
+            <Box d="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"
                 mr={2}
